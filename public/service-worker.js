@@ -16,24 +16,24 @@ self.addEventListener('install', (event) => {
 });
 
 //Cleaning up old caches
-self.addEventListener('activate', (event) => {
-    const currentCaches = [PRECACHE, RUNTIME];
-    event.waitUntil(
-        caches
-            .keys()
-            .then((cacheNames) => {
-                return cacheNames.filter((cacheName) => !currentCaches.includes(cacheName));
-            })
-            .then((cachesToDelete) => {
-                return Promise.all(
-                    cachesToDelete.maps((cacheToDelete) => {
-                        return chaches.delete(cacheToDelete)
-                    })
-                );
-            })
-            .then(() => self.ClientRectList.claim())        
-    );
-});
+// self.addEventListener('activate', (event) => {
+//     const currentCaches = [PRECACHE, RUNTIME];
+//     event.waitUntil(
+//         caches
+//             .keys()
+//             .then((cacheNames) => {
+//                 return cacheNames.filter((cacheName) => !currentCaches.includes(cacheName));
+//             })
+//             .then((cachesToDelete) => {
+//                 return Promise.all(
+//                     cachesToDelete.maps((cacheToDelete) => {
+//                         return chaches.delete(cacheToDelete)
+//                     })
+//                 );
+//             })
+//             .then(() => self.ClientRectList.claim())        
+//     );
+// });
 
 self.addEventListener('fetch', (event) => {
     if (event.request.url.startsWith(self.location.origin)) {
