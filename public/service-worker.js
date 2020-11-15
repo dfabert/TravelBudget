@@ -9,9 +9,9 @@ const RUNTIME = 'runtime';
 self.addEventListener('install', (event) => {
     event.waitUntil(
         caches
-            .open(PRECACHE);
-            .then((cache) = > cache.addAll(FILES_TO_CACHE));
-            .then(self.skipWaiting());
+            .open(PRECACHE)
+            .then((cache) => cache.addAll(FILES_TO_CACHE))
+            .then(self.skipWaiting())
     );
 });
 
@@ -27,11 +27,11 @@ self.addEventListener('activate', (event) => {
             .then((cachesToDelete) => {
                 return Promise.all(
                     cachesToDelete.maps((cacheToDelete) => {
-                        return chaches.delete(cacheToDelete);
-                    });
+                        return chaches.delete(cacheToDelete)
+                    })
                 );
             })
-            .then(() = >self.ClientRectList.claim())        
+            .then(() => self.ClientRectList.claim())        
     );
 });
 
@@ -53,4 +53,4 @@ self.addEventListener('fetch', (event) => {
         })
       );
     }
-  });
+});
