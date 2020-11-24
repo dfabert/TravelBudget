@@ -24,7 +24,7 @@ self.addEventListener("install", function(evt) {
   self.skipWaiting();
 });
 
-//acttivate
+//activate
 self.addEventListener("activate", function(evt) {
   evt.waitUntil(
     caches.keys().then(keyList => {
@@ -45,7 +45,7 @@ self.addEventListener("activate", function(evt) {
 // fetch
 self.addEventListener("fetch", function(evt) {
   // cache successful requests to the API
-  if (evt.request.url.includes("../routes/api/")) {
+  if (evt.request.url.includes("/api/")) {
     evt.respondWith(
       caches.open(DATA_CACHE_NAME).then(cache => {
         return fetch(evt.request)
